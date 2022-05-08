@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elly.portfolio.mapper.BoardMapper">
+
+<!-- 프로젝트 리스트 조회 -->
+<select id="getAllBoardList" resultType="com.elly.portfolio.vo.IntroList">
+    SELECT no, project_nm, contents
+    FROM intro_list
+    ORDER BY no DESC
+</select>
+
+<!-- 선택한 프로젝트 상세보기 -->
+<select id="getBoardSelectOne" parameterType="Integer" resultType="HashMap">
+    SELECT project_nm, contents
+    FROM intro_list
+    WHERE no = ${no}
+</select>
+
+<!-- 프로젝트 등록 -->
+<insert id="insertBoard" parameterType="com.elly.portfolio.dto.ProjectAddDto">
+    INSERT INTO intro_list (project_nm, contents)
+    VALUES (#{project_nm}, #{contents})
+</insert>
+
+<!-- 선택한 프로젝트 수정 -->
+<update id="updateBoard" parameterType="com.elly.portfolio.dto.ProjectAddDto">
+    UPDATE intro_list SET 
+    project_nm = #{project_nm}, 
+    contents = #{contents}
+    WHERE no = ${no};
+</update>
+
+<!-- 선택한 프로젝트 삭제 -->
+<delete id="deleteBoard" parameterType="Integer">
+    DELETE FROM intro_list WHERE no = ${no};
+</delete>
+
+</mapper>
