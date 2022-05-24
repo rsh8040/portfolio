@@ -1,0 +1,47 @@
+html {
+    min-width: 1280px;
+}
+
+body {
+    font-family: 'Noto Sans Korean';
+}
+
+table {
+    border-collapse: collapse;
+    width: 60%;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+h2 {
+    text-align: center;
+    margin: 80px;
+}
+
+.btn {
+    width: 200px;
+    margin: auto;
+    margin-top: 40px;
+    display: block;
+}
+
+.text{
+    width: 500px;
+}
+
+.textarea {
+    width: 500px;
+    height: 500px;
+}
+
+.detailBtn {
+    width: 50px;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+}

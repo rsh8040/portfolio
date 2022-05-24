@@ -9,7 +9,7 @@ public class IntroList {
     /**
      * 글 번호
      */
-    private int no;
+    private Integer no;
     /**
      * 프로젝트 제목
      */

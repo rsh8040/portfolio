@@ -18,7 +18,7 @@ public interface BoardMapper {
     /**
      * 선택한 프로젝트 상세보기
      */
-    public HashMap<String, Object> getBoardSelectOne(int no) throws Exception;
+    public ProjectAddDto getBoardSelectOne(Integer no) throws Exception;
 
     /**
      * 프로젝트 리스트 등록
@@ -28,10 +28,10 @@ public interface BoardMapper {
     /**
      * 선택한 프로젝트 리스트 수정
      */
-    public void updateBoard(ProjectAddDto projectAddDto) throws Exception;
+    public void updateBoard(HashMap<String, Object> param) throws Exception;
 
     /**
      * 선택한 프로젝트 리스트 삭제
      */
-    public void deleteBoard(int no) throws Exception;
+    public void deleteBoard(Integer no) throws Exception;
 }

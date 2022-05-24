@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+    <title>BoardDetail</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>프로젝트 수정</h2>
+        <form method="post" action="/board/update">
+            <table>
+                <tr>
+                    <td>프로젝트 제목</td>
+                    <td><input class="text" type="text" id="projectNm" name="projectNm" th:value="${board.projectNm}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>프로젝트 내용</td>
+                    <td colspan="2">
+                        <textarea class="textarea" id="contents" name="contents" th:text="${board.contents}"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" id="no" name="no" th:value="${board.no}" />
+            <input class="btn" type="submit" value="저장">
+        </form>
+    </div>
+</body>
+
+</html>

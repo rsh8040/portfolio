@@ -14,7 +14,7 @@ public class ProjectAddDto {
     /**
      * 프로젝트 제목
      */
-    private String project_nm;
+    private String projectNm;
     /**
      * 프로젝트 내용
      */

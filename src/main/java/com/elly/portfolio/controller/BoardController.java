@@ -7,15 +7,13 @@ import com.elly.portfolio.dto.ProjectAddDto;
 import com.elly.portfolio.service.BoardService;
 import com.elly.portfolio.vo.IntroList;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,42 +28,74 @@ public class BoardController {
      * 프로젝트 리스트 조회
      */
     @GetMapping("/list")
-    public @ResponseBody List<IntroList> mainPage() throws Exception {
-        return boardService.getAllBoardList();
+    public String mainPage(Model model) throws Exception {
+        List<IntroList> boardList = boardService.getAllBoardList();
+        model.addAttribute("boardList" , boardList);
+        return "boardList.html";
     }
     
     /**
      * 선택한 프로젝트 상세보기 페이지
      */
-    @GetMapping(value = "/detail/{no}")
-    public @ResponseBody HashMap<String, Object> detailPage(@PathVariable(value = "no", required = true) int no) throws Exception {
-        return boardService.getBoardSelectOne(no);
+    @GetMapping("/detail/{no}")
+    public String detail(@PathVariable(value = "no", required = true) Integer no, Model model) throws Exception {
+        ProjectAddDto board = boardService.getBoardSelectOne(no);
+        System.out.println("@@@"+boardService.getBoardSelectOne(no));
+        model.addAttribute("board", board);
+        return "boardDetail.html";
     }
 
     /**
      * 프로젝트 리스트 등록
      */
-    @PostMapping(value = "/write")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void write(@ModelAttribute ProjectAddDto projectAddDto) throws Exception {
+    @PostMapping("/write")
+    public String write(ProjectAddDto projectAddDto) throws Exception {
         boardService.insertBoard(projectAddDto);
+        return "redirect:/board/list";
     }
 
     /**
      * 선택한 프로젝트 리스트 수정
      */
-    @PostMapping(value = "/update/{no}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@PathVariable(value = "no", required = true) int no, @ModelAttribute ProjectAddDto projectAddDto) throws Exception {
-        boardService.updateBoard(projectAddDto);
+    @PostMapping("/update")
+    public String update(
+        @RequestParam(value="no", required = true) int no,
+		@RequestParam(value="projectNm", required = true) String projectNm,
+		@RequestParam(value="contents", required = true) String contents
+    ) throws Exception {
+        HashMap<String, Object> param = new HashMap<String, Object>();
+        param.put("no", no);
+        param.put("projectNm", projectNm);
+        param.put("contents", contents);
+        boardService.updateBoard(param);
+        return "redirect:/board/list";
     }
 
     /**
      * 선택한 프로젝트 리스트 삭제
      */
-    @GetMapping(value = "/delete/{no}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(@PathVariable(value = "no", required = true) int no) throws Exception {
+    @GetMapping("/delete")
+    public String delete(Integer no) throws Exception {
         boardService.deleteBoard(no);
+        return "redirect:/board/list";
     }
+
+    /**
+     * 프로젝트 리스트 등록페이지
+     */
+    @GetMapping("/writepage")
+    public String writePage() throws Exception {
+        return "boardInsert.html";
+    }
+
+    /**
+     * 프로젝트 수정 페이지
+     */
+    @GetMapping("/updatePage")
+    public String updatePage(Integer no, Model model, ProjectAddDto projectAddDto) throws Exception {
+        ProjectAddDto board = boardService.getBoardSelectOne(no);
+        model.addAttribute("board", board);
+        return "boardUpdate.html";
+    }
+
 }

@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/*대화상자 제목*/
+.ui-widget-header {
+    background-image: -webkit-linear-gradient(90deg, rgb(116, 127, 144) 0%, rgb(86, 92, 102) 51%, rgb(116, 127, 144) 99%, rgb(116, 127, 144) 99%, rgb(116, 127, 144) 100%, rgb(116, 127, 144) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(116, 127, 144) 0%, rgb(86, 92, 102) 51%, rgb(116, 127, 144) 99%, rgb(116, 127, 144) 99%, rgb(116, 127, 144) 100%, rgb(116, 127, 144) 100%);
+    background-image: -moz-linear-gradient(90deg, rgb(116, 127, 144) 0%, rgb(86, 92, 102) 51%, rgb(116, 127, 144) 99%, rgb(116, 127, 144) 99%, rgb(116, 127, 144) 100%, rgb(116, 127, 144) 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    border: 1px solid #49505b;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: .5em 1em;
+}
+
+.ui-widget-content {
+    background: #22252a
+}
+
+.ui-widget.ui-widget-content {
+    border: 1px solid #22252a
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: 1px solid #22252a;
+    background: #22252a;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    border: 1px solid #22252a;
+    background: #22252a;
+    opacity: .8;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #7da2e1;
+    background: #7da2e1;
+}
+
+.ui-button .ui-icon {
+    background-image: url(../../images/ui-icons_ffffff_256x240.png);
+}
+
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon, .ui-button:hover .ui-icon, .ui-button:focus .ui-icon {
+    background-image: url(../../images/ui-icons_ffffff_256x240.png);
+}
+
+.ui-widget-content {
+    color: #fff
+}
+
+.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 0;
+    padding: 15px 20px !important;
+    background: none;
+    overflow: auto
+}
+
+.cbtn.ui-button.ui-corner-all.ui-widget{
+    font-family: 'Noto Sans Korean';font-size: 14px;font-weight: 600;border-radius: 3px;color: #fff;text-align: center;padding: 8px 0;outline: none;border: none;width: 100px;margin-right: 5px;
+    background-color: #305ca6;
+}

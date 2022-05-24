@@ -28,7 +28,7 @@ public class BoardService {
     /**
      * 선택한 프로젝트 상세보기
      */
-    public HashMap<String, Object> getBoardSelectOne(int no) throws Exception {
+    public ProjectAddDto getBoardSelectOne(Integer no) throws Exception {
         return boardMapper.getBoardSelectOne(no);
     }
 
@@ -45,15 +45,15 @@ public class BoardService {
      * 선택한 프로젝트 수정
      */
     @Transactional
-    public void updateBoard(ProjectAddDto projectAddDto) throws Exception {
-        boardMapper.updateBoard(projectAddDto);
+    public void updateBoard(HashMap<String, Object> param) throws Exception {
+        boardMapper.updateBoard(param);
     }
 
     /**
      * 선택한 프로젝트 삭제
      */
     @Transactional
-    public void deleteBoard(int no) throws Exception {
+    public void deleteBoard(Integer no) throws Exception {
         boardMapper.deleteBoard(no);
         
     }
