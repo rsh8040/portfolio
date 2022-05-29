@@ -7,27 +7,8 @@ body {
 }
 
 table {
-    border-collapse: collapse;
-    width: 60%;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-h2 {
-    text-align: center;
-    margin: 80px;
-}
-
-.btn {
-    width: 200px;
-    margin: auto;
-    margin-top: 40px;
-    display: block;
+    margin-top: 250px;
+    margin-left: 208px;    
 }
 
 .text{
@@ -36,7 +17,7 @@ h2 {
 
 .textarea {
     width: 500px;
-    height: 500px;
+    height: 200px;
 }
 
 .detailBtn {
@@ -179,7 +160,7 @@ a:hover:before {
     float: left;
 }
 
-button {
+button, .btn {
     position: absolute;
     bottom: 164px;
     right: 140px;
