@@ -7,6 +7,7 @@ import com.elly.portfolio.dto.ProjectAddDto;
 import com.elly.portfolio.service.BoardService;
 import com.elly.portfolio.vo.IntroList;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +26,10 @@ public class BoardController {
     
     private final BoardService boardService;
 
+    @GetMapping("/")
+    public String index() {
+        return "index.html";
+    }
     /**
      * 프로젝트 리스트 조회
      */
@@ -40,7 +46,6 @@ public class BoardController {
     @GetMapping("/detail/{no}")
     public String detail(@PathVariable(value = "no", required = true) Integer no, Model model) throws Exception {
         ProjectAddDto board = boardService.getBoardSelectOne(no);
-        System.out.println("@@@"+boardService.getBoardSelectOne(no));
         model.addAttribute("board", board);
         return "boardDetail.html";
     }
@@ -48,25 +53,44 @@ public class BoardController {
     /**
      * 프로젝트 리스트 등록
      */
-    @PostMapping("/write")
-    public String write(ProjectAddDto projectAddDto) throws Exception {
-        boardService.insertBoard(projectAddDto);
+    @PostMapping(value = "/write", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public String write(
+        @RequestParam(value="projectNm", required = true) String projectNm,
+        @RequestParam(value="contents", required = true) String contents,
+        @RequestParam(value = "attachment") MultipartFile attachment
+        ) throws Exception {
+            HashMap<String,Object> param = new HashMap<String, Object>();
+            param.put("projectNm", projectNm);
+            param.put("contents", contents);
+            if(null != attachment) {
+                param.put("attachment", attachment.getBytes());
+                param.put("attachmentNm", attachment.getOriginalFilename());
+            }
+            System.out.println("SSS"+ attachment.getBytes());
+            System.out.println("SSS"+ attachment.getSize());
+            System.out.println("SSS"+ attachment.getOriginalFilename());
+        boardService.insertBoard(param);
         return "redirect:/board/list";
     }
 
     /**
      * 선택한 프로젝트 리스트 수정
      */
-    @PostMapping("/update")
+    @PostMapping(value = "/update", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String update(
         @RequestParam(value="no", required = true) int no,
 		@RequestParam(value="projectNm", required = true) String projectNm,
-		@RequestParam(value="contents", required = true) String contents
+		@RequestParam(value="contents", required = true) String contents,
+        @RequestParam(value = "attachment") MultipartFile attachment
     ) throws Exception {
         HashMap<String, Object> param = new HashMap<String, Object>();
         param.put("no", no);
         param.put("projectNm", projectNm);
         param.put("contents", contents);
+        if(null != attachment) {
+            param.put("attachment", attachment.getBytes());
+            param.put("attachmentNm", attachment.getOriginalFilename());
+        }
         boardService.updateBoard(param);
         return "redirect:/board/list";
     }

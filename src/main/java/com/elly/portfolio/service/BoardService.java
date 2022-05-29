@@ -36,8 +36,8 @@ public class BoardService {
      * 프로젝트 등록
      */
     @Transactional
-    public void insertBoard(ProjectAddDto projectAddDto) throws Exception {
-        boardMapper.insertBoard(projectAddDto);
+    public void insertBoard(HashMap<String, Object> param) throws Exception {
+        boardMapper.insertBoard(param);
         
     }
 

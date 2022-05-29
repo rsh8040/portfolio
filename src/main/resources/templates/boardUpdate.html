@@ -25,6 +25,10 @@
                         <textarea class="textarea" id="contents" name="contents" th:text="${board.contents}"></textarea>
                     </td>
                 </tr>
+                <tr>
+                    <td>첨부파일</td>
+                    <td><input class="file" type="file" id="attachment" name="attachment"></td>
+                </tr>
             </table>
             <input type="hidden" id="no" name="no" th:value="${board.no}" />
             <input class="btn" type="submit" value="저장">

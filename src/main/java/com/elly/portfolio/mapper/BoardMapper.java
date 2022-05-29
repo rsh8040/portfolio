@@ -23,7 +23,7 @@ public interface BoardMapper {
     /**
      * 프로젝트 리스트 등록
      */
-    public void insertBoard(ProjectAddDto projectAddDto) throws Exception;
+    public void insertBoard(HashMap<String, Object> param) throws Exception;
 
     /**
      * 선택한 프로젝트 리스트 수정

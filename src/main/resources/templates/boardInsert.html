@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h2>프로젝트 등록</h2>
-        <form  method="post" action="/board/write">
+        <form  method="post" action="/board/write" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>프로젝트 제목</td>
@@ -20,6 +20,12 @@
                     <td>프로젝트 내용</td>
                     <td colspan="2">
                         <textarea class="textarea" id="contents" name="contents"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>첨부파일</td>
+                    <td>
+                        <input class="file" type="file" id="attachment" name="attachment">
                     </td>
                 </tr>
             </table>

@@ -4,29 +4,31 @@
 
 <!-- 프로젝트 리스트 조회 -->
 <select id="getAllBoardList" resultType="com.elly.portfolio.vo.IntroList">
-    SELECT no, projectNm, contents
+    SELECT no, projectNm, contents, regDate
     FROM intro_list
     ORDER BY no DESC
 </select>
 
 <!-- 선택한 프로젝트 상세보기 -->
 <select id="getBoardSelectOne" parameterType="Integer" resultType="com.elly.portfolio.dto.ProjectAddDto">
-    SELECT no, projectNm, contents
+    SELECT no, projectNm, contents, attachmentNm
     FROM intro_list
     WHERE no = '${no}'
 </select>
 
 <!-- 프로젝트 등록 -->
-<insert id="insertBoard" parameterType="com.elly.portfolio.dto.ProjectAddDto">
-    INSERT INTO intro_list (projectNm, contents)
-    VALUES (#{projectNm}, #{contents})
+<insert id="insertBoard" parameterType="HashMap">
+    INSERT INTO intro_list (projectNm, contents, attachment, attachmentNm)
+    VALUES (#{projectNm}, #{contents}, #{attachment}, #{attachmentNm})
 </insert>
 
 <!-- 선택한 프로젝트 수정 -->
 <update id="updateBoard" parameterType="HashMap">
     UPDATE intro_list SET 
     projectNm = #{projectNm}, 
-    contents = #{contents}
+    contents = #{contents},
+    attachment = #{attachment},
+    attachmentNm = #{attachmentNm}
     WHERE no = '${no}'
 </update>
 

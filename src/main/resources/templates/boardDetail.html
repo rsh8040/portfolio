@@ -25,6 +25,12 @@
                         th:text="${board.contents}"></textarea>
                 </td>
             </tr>
+            <tr th:if="${'' != board.attachmentNm}">
+                <td>첨부파일</td>
+                <td>
+                    <block th:text="${board.attachmentNm}"></block>
+                </td>
+            </tr>
         </table>
         <div class="detailBtn">
             <form action="/board/updatePage" method="get">
