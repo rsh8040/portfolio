@@ -7,8 +7,13 @@ body {
 }
 
 table {
-    margin-top: 250px;
+    margin-top: 150px;
     margin-left: 208px;    
+}
+
+td {
+    font-size: large;
+    font-weight: 800;
 }
 
 .text{
@@ -20,11 +25,17 @@ table {
     height: 200px;
 }
 
-.detailBtn {
+.detail-btn {
     width: 50px;
     margin: auto;
     margin-top: 40px;
     display: flex;
+}
+
+.d-btn {
+    margin-left: 20px;
+    border: none;
+    font-weight: 700;
 }
 
 .main-container {
@@ -166,6 +177,9 @@ button, .btn {
     right: 140px;
     border: none;
     font-weight: 700;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
 }
 
 button a {
