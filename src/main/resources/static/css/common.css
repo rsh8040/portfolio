@@ -190,3 +190,37 @@ button {
 button a {
     text-decoration: none;
 }
+
+.card-list {
+    margin: 80px 0 0 530px;
+    width: 1400px;
+    overflow: hidden;
+}
+
+.card {
+    margin: 0 auto;
+    margin-left : 25px;
+    padding-top: 10px;
+    float: left;
+}
+
+.card-text {
+    font-weight: 600;
+    color: #a5a3a3;
+}
+
+.card-title {
+    font-weight: 900;
+    font-size: large;
+    color: #000;
+}
+
+.card-date {
+    font-weight: 400;
+    font-size: small;
+    color: #000;
+}
+
+.card a {
+    text-decoration: none;
+}

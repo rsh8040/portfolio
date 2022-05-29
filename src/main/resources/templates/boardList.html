@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
     <title>BoardList</title>
 </head>
+
 <body>
-    <h2>프로젝트 리스트</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th>프로젝트 제목</th>
-            <th>작성일</th>
-        </tr>
-        </thead>
-    
-        <tbody>
-        <tr th:each="board : ${boardList}">
-            <td>
-                <span th:text="${board.no}"></span>
-            </td>
-            <td>
-                <a th:href="@{'/board/detail/' + ${board.no}}">
-                    <span th:text="${board.projectNm}"></span>
-                </a>
-            </td>
-            <td>
-                <span th:text="${#dates.format(board.regDate, 'yyyy-MM-dd')}"></span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/board/writepage}"><input class="btn" type="button" value="새 프로젝트 등록"></a>
+    <div class="main-container">
+        <div class="profile">
+            <img src="/image/cat.jpg" width="100px" height="100px">
+            <div class="profile-name">Elly</div>
+        </div>
+        <div class="text-list">
+            <a th:href="@{/}">
+                <div class="item">About</div>
+            </a>
+            <a th:href="@{/board/list}">
+                <div class="item">Experience</div>
+            </a>
+            <a href="">
+                <div class="item">Education</div>
+            </a>
+            <a href="">
+                <div class="item">Skill</div>
+            </a>
+            <a href="">
+                <div class="item">Strength</div>
+            </a>
+        </div>
+    </div>
+    <div class="card-list">
+        <div th:each="board : ${boardList}" class="card" style="width: 18rem;">
+            <a th:href="@{'/board/detail/' + ${board.no}}">
+                <img src="/image/yangsan01.png" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text" th:text="${board.contents}"></p>
+                </div>
+                <div class="card-title" th:text="${board.projectNm}"></div>
+                <div class="card-date" th:text="${#dates.format(board.regDate, 'yyyy-MM-dd')}"></div>
+            </a>
+        </div>
+    </div>
+    <button><a th:href="@{/board/writepage}">새 프로젝트 등록</a></button>
 </body>
+
 </html>
