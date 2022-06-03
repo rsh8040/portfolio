@@ -159,18 +159,16 @@ a:hover:before {
     z-index: -1;
 }
 
-.project-list {
-    margin: -530px 0 0 1158px;
-    display: block;
-    width: 650px;
+#carouselExampleControls {
+    margin-left: 1058px;
+    top: -517px;
+    width: 800px;
+    height: 500px;
 }
 
-.project-img {
-    /* margin-bottom: 20px; */
-    margin: 0 auto;
-    margin-left : 10px;
-    padding-top: 10px;
-    float: left;
+.carousel .slide {
+    width: 1000px;
+    height: 800px;
 }
 
 button, .btn {
@@ -220,4 +218,8 @@ button a {
 
 .card a {
     text-decoration: none;
+}
+
+.w-100 {
+    width: 40%;
 }

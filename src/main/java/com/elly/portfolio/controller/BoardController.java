@@ -3,10 +3,6 @@ package com.elly.portfolio.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import com.elly.portfolio.dto.ProjectAddDto;
-import com.elly.portfolio.service.BoardService;
-import com.elly.portfolio.vo.IntroList;
-
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.elly.portfolio.dto.ProjectAddDto;
+import com.elly.portfolio.service.BoardService;
+import com.elly.portfolio.vo.IntroList;
 
 import lombok.RequiredArgsConstructor;
 
