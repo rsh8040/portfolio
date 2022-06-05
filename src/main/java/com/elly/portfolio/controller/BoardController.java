@@ -1,7 +1,12 @@
 package com.elly.portfolio.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.swing.filechooser.FileSystemView;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -59,16 +64,28 @@ public class BoardController {
         @RequestParam(value="contents", required = true) String contents,
         @RequestParam(value = "attachment") MultipartFile attachment
         ) throws Exception {
+            String originalFileName = attachment.getOriginalFilename();
+            String rootPath = FileSystemView.getFileSystemView().getHomeDirectory().toString();
+            String basePath = rootPath + "\\"+ "temp";
+            String projectPath = basePath;
+            if(!attachment.isEmpty()){
+                try{
+                    InputStream inputStream = attachment.getInputStream();
+                    File saveFile = new File(projectPath,originalFileName);
+                    attachment.transferTo(saveFile);
+                    
+                    inputStream.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
             HashMap<String,Object> param = new HashMap<String, Object>();
             param.put("projectNm", projectNm);
             param.put("contents", contents);
             if(null != attachment) {
-                param.put("attachment", attachment.getBytes());
-                param.put("attachmentNm", attachment.getOriginalFilename());
+                param.put("attachment", "/upload/" + originalFileName);
+                param.put("attachmentNm",originalFileName);
             }
-            System.out.println("SSS"+ attachment.getBytes());
-            System.out.println("SSS"+ attachment.getSize());
-            System.out.println("SSS"+ attachment.getOriginalFilename());
         boardService.insertBoard(param);
         return "redirect:/board/list";
     }
@@ -83,12 +100,27 @@ public class BoardController {
 		@RequestParam(value="contents", required = true) String contents,
         @RequestParam(value = "attachment") MultipartFile attachment
     ) throws Exception {
+        String originalFileName = attachment.getOriginalFilename();
+        String rootPath = FileSystemView.getFileSystemView().getHomeDirectory().toString();
+        String basePath = rootPath + "\\"+ "temp";
+        String projectPath = basePath;
+        if(!attachment.isEmpty()){
+            try{
+                InputStream inputStream = attachment.getInputStream();
+                File saveFile = new File(projectPath,originalFileName);
+                attachment.transferTo(saveFile);
+                
+                inputStream.close();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
         HashMap<String, Object> param = new HashMap<String, Object>();
         param.put("no", no);
         param.put("projectNm", projectNm);
         param.put("contents", contents);
         if(null != attachment) {
-            param.put("attachment", attachment.getBytes());
+            param.put("attachment", "/upload/" + originalFileName);
             param.put("attachmentNm", attachment.getOriginalFilename());
         }
         boardService.updateBoard(param);

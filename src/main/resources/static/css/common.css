@@ -74,12 +74,12 @@ td {
     font-weight: 600;
     color: #fff;
 }
-a {
+.text-list a {
     position: relative;
     text-decoration: none;
 }
 
-a:before {
+.text-list a:before {
     content: '';
     position: absolute;
     background-color: #fff;
@@ -90,7 +90,7 @@ a:before {
     left: 25%;
 }
 
-a:hover:before {
+.text-list a:hover:before {
     width: 100%;
 }
 
@@ -171,7 +171,7 @@ a:hover:before {
     height: 800px;
 }
 
-button, .btn {
+.btn {
     position: absolute;
     bottom: 870px;
     right: 140px;
@@ -179,7 +179,11 @@ button, .btn {
     font-weight: 700;
     margin: auto;
     margin-top: 40px;
-    display: flex;
+    display: flex !important;
+}
+
+.sub-btn {
+    margin-left: 10px;
 }
 
 button a {

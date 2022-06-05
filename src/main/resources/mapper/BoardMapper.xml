@@ -4,14 +4,14 @@
 
 <!-- 프로젝트 리스트 조회 -->
 <select id="getAllBoardList" resultType="com.elly.portfolio.vo.IntroList">
-    SELECT no, projectNm, contents, regDate
+    SELECT no, projectNm, contents, regDate, attachment
     FROM intro_list
     ORDER BY no DESC
 </select>
 
 <!-- 선택한 프로젝트 상세보기 -->
 <select id="getBoardSelectOne" parameterType="Integer" resultType="com.elly.portfolio.dto.ProjectAddDto">
-    SELECT no, projectNm, contents, attachmentNm
+    SELECT no, projectNm, contents, attachment, attachmentNm
     FROM intro_list
     WHERE no = '${no}'
 </select>

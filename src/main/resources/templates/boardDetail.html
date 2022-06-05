@@ -57,28 +57,24 @@
                 </td>
             </tr>
             <tr>
-                <td>IMAGES</td>
-                <td>
-                    <img src="/image/yangsan01.png" width="500px" height="300px">
-                </td>
             </tr>
             <tr th:if="${'' != board.attachmentNm}">
                 <td>FILE UPLOAD</td>
                 <td>
-                    <block th:text="${board.attachmentNm}"></block>
+                    <img th:src="@{${board.attachment}}" width="500px" height="300px">
                 </td>
             </tr>
         </table>
-        <div class="detail-btn">
+        <div class="btn">
             <form action="/board/updatePage" method="get">
                 <input type="hidden" id="no" name="no" th:value="${board.no}" />
-                <input class ="d-btn" type="submit" value="MODIFY">
+                <input class="sub-btn" type="submit" value="MODIFY">
             </form>
             <form action="/board/delete" method="get">
                 <input type="hidden" id="no" name="no" th:value="${board.no}" />
-                <input class ="d-btn" type="submit" value="DELETE">
+                <input class="sub-btn" type="submit" value="DELETE">
             </form>
-            <a th:href="@{/board/list}"><input class ="d-btn" type="button" value="SHOW LIST"></a>
+            <a th:href="@{/board/list}"><input class="sub-btn" type="button" value="SHOW LIST"></a>
         </div>
     </div>
 </body>

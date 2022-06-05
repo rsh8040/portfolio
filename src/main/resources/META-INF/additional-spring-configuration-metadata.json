@@ -1,0 +1,14 @@
+{"properties": [
+  {
+    "name": "resource.path",
+    "type": "java.lang.String",
+    "defaultValue": "file:///C:/Users/rsh80/Desktop/temp/",
+    "description": "A description for 'resource.path'"
+  },
+  {
+    "name": "upload.path",
+    "type": "java.lang.String",
+    "defaultValue": "/upload/**",
+    "description": "A description for 'upload.path'"
+  }
+]}

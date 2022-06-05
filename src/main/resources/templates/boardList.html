@@ -45,7 +45,7 @@
     <div class="card-list">
         <div th:each="board : ${boardList}" class="card" style="width: 18rem;">
             <a th:href="@{'/board/detail/' + ${board.no}}">
-                <img src="/image/yangsan01.png" class="card-img-top">
+                <img th:src="@{${board.attachment}}" class="card-img-top">
                 <div class="card-body">
                     <p class="card-text" th:text="${board.contents}"></p>
                 </div>

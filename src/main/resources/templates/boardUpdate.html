@@ -57,14 +57,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>IMAGES</td>
-                    <td>
-                        <img src="/image/yangsan01.png" width="500px" height="300px">
-                    </td>
-                </tr>
-                <tr>
                     <td>FILE UPLOAD</td>
-                    <td><input class="file" type="file" id="attachment" name="attachment"></td>
+                    <td>
+                        <img th:src="@{${board.attachment}}" width="500px" height="300px">
+                        <input class="file" type="file" id="attachment" name="attachment">
+                    </td>
                 </tr>
             </table>
             <input type="hidden" id="no" name="no" th:value="${board.no}" />
