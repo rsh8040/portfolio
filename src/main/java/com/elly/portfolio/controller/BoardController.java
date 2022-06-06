@@ -3,11 +3,14 @@ package com.elly.portfolio.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.filechooser.FileSystemView;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,15 +68,17 @@ public class BoardController {
         @RequestParam(value = "attachment") MultipartFile attachment
         ) throws Exception {
             String originalFileName = attachment.getOriginalFilename();
+            String now  = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
+            String newFileName = "attach_"+now;
+            String extention = FilenameUtils.getExtension(originalFileName);
             String rootPath = FileSystemView.getFileSystemView().getHomeDirectory().toString();
             String basePath = rootPath + "\\"+ "temp";
             String projectPath = basePath;
             if(!attachment.isEmpty()){
                 try{
                     InputStream inputStream = attachment.getInputStream();
-                    File saveFile = new File(projectPath,originalFileName);
+                    File saveFile = new File(projectPath,newFileName+"."+extention);
                     attachment.transferTo(saveFile);
-                    
                     inputStream.close();
                 }catch(IOException e){
                     e.printStackTrace();
@@ -83,7 +88,7 @@ public class BoardController {
             param.put("projectNm", projectNm);
             param.put("contents", contents);
             if(null != attachment) {
-                param.put("attachment", "/upload/" + originalFileName);
+                param.put("attachment", "/upload/" + newFileName+"."+extention);
                 param.put("attachmentNm",originalFileName);
             }
         boardService.insertBoard(param);
@@ -101,13 +106,16 @@ public class BoardController {
         @RequestParam(value = "attachment") MultipartFile attachment
     ) throws Exception {
         String originalFileName = attachment.getOriginalFilename();
+        String now  = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
+        String newFileName = "attach_"+now;
+        String extention = FilenameUtils.getExtension(originalFileName);
         String rootPath = FileSystemView.getFileSystemView().getHomeDirectory().toString();
         String basePath = rootPath + "\\"+ "temp";
         String projectPath = basePath;
         if(!attachment.isEmpty()){
             try{
                 InputStream inputStream = attachment.getInputStream();
-                File saveFile = new File(projectPath,originalFileName);
+                File saveFile = new File(projectPath,newFileName+"."+extention);
                 attachment.transferTo(saveFile);
                 
                 inputStream.close();
@@ -120,7 +128,7 @@ public class BoardController {
         param.put("projectNm", projectNm);
         param.put("contents", contents);
         if(null != attachment) {
-            param.put("attachment", "/upload/" + originalFileName);
+            param.put("attachment", "/upload/" + newFileName+"."+extention);
             param.put("attachmentNm", attachment.getOriginalFilename());
         }
         boardService.updateBoard(param);
