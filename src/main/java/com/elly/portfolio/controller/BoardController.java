@@ -34,10 +34,14 @@ public class BoardController {
     
     private final BoardService boardService;
 
+    /**
+     * 메인페이지
+     */
     @GetMapping("/")
     public String index() {
         return "index.html";
     }
+
     /**
      * 프로젝트 리스트 조회
      */
@@ -160,6 +164,14 @@ public class BoardController {
         ProjectAddDto board = boardService.getBoardSelectOne(no);
         model.addAttribute("board", board);
         return "boardUpdate.html";
+    }
+
+    /**
+     * skill 페이지
+     */
+    @GetMapping("/skill")
+    public String skill() {
+        return "skill.html";
     }
 
 }

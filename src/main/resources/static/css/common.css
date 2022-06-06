@@ -227,3 +227,24 @@ button a {
 .w-100 {
     width: 40%;
 }
+
+.second-container {
+    margin: 40px 0 0 700px;
+}
+
+.skill-package {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.skill-title {
+    width: 150px;
+    height: 100px;
+    line-height: 100px;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.skill-contents img {
+    margin-left: 20px;
+}
