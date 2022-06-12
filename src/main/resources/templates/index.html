@@ -43,7 +43,8 @@
         </div>
     </div>
     <div class="name-card">
-        <div class="title">Developer Elly's Portfolio</div>
+        <div class="title">
+          <span class="text"></span><span class="blink">|</span></div>
         <div class="sub-title">Welcome to my homepage!</div>
     </div>
     <div class="sns-list">
@@ -56,6 +57,16 @@
         <a href="https://www.facebook.com/profile.php?id=100004653993041">
             <div class="sns-item"><img src="/image/facebook.png"></div>
         </a>
+        <a href="https://github.com/rsh8040/portfolio">
+          <div class="sns-item"><img src="/image/Github-Light.svg"></div>
+        </a>
+    </div>
+    <div class="about-textbox">
+      <div class="about-title">About Me</div>
+      <div class="about-content">누구나 사용하기쉽고, 이해하기 쉬우며 쉽게 친숙해질 수 있는 웹페이지를 만들기 위해 <br>
+        새로운 개발환경, 언어, 기술을 받아들일 준비가 되어있고<br>
+        항상 적극적인 자세로 협업하고 내가 가진 지식을 함께 공유하고 싶은<br>
+        developer 임수현 입니다.</div>
     </div>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -89,5 +100,19 @@
       </div>
     <button class="btn" style="color:#0d6efd"><a th:href="@{/board/list}">more</a></button>
 </body>
+<script>
+    const content = "Developer Elly's Portfolio"
+    const text = document.querySelector(".text");
+    var i = 0;
 
+    function typing() {
+      let txt = content[i++];
+      text.innerHTML += txt;
+      if( i > content.length) {
+        text.textContent = "";
+        i = 0;
+      }
+    }
+    setInterval(typing, 500)
+</script>
 </html>

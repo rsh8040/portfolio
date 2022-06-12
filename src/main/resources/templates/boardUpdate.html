@@ -58,8 +58,10 @@
                 </tr>
                 <tr>
                     <td>FILE UPLOAD</td>
-                    <td>
+                    <td th:if="${not #strings.isEmpty(board.attachmentNm)}">
                         <img th:src="@{${board.attachment}}" width="500px" height="300px">
+                    </td>
+                    <td>
                         <input class="file" type="file" id="attachment" name="attachment">
                     </td>
                 </tr>

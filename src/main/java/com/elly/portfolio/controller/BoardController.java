@@ -91,7 +91,7 @@ public class BoardController {
             HashMap<String,Object> param = new HashMap<String, Object>();
             param.put("projectNm", projectNm);
             param.put("contents", contents);
-            if(null != attachment) {
+            if(!attachment.isEmpty()) {
                 param.put("attachment", "/upload/" + newFileName+"."+extention);
                 param.put("attachmentNm",originalFileName);
             }
@@ -131,7 +131,10 @@ public class BoardController {
         param.put("no", no);
         param.put("projectNm", projectNm);
         param.put("contents", contents);
-        if(null != attachment) {
+        param.put("attachment", attachment);
+        param.put("attachmentNm", originalFileName);
+
+        if(!attachment.isEmpty()) {
             param.put("attachment", "/upload/" + newFileName+"."+extention);
             param.put("attachmentNm", attachment.getOriginalFilename());
         }

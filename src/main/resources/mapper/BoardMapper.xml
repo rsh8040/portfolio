@@ -25,10 +25,12 @@
 <!-- 선택한 프로젝트 수정 -->
 <update id="updateBoard" parameterType="HashMap">
     UPDATE intro_list SET 
-    projectNm = #{projectNm}, 
-    contents = #{contents},
-    attachment = #{attachment},
-    attachmentNm = #{attachmentNm}
+    projectNm = #{projectNm}
+    ,contents = #{contents}
+    <if test="(attachment != null and attachment != '') and (attachmentNm != null and attachmentNm != '')">
+    ,attachment = #{attachment}
+    ,attachmentNm = #{attachmentNm}
+    </if>
     WHERE no = '${no}'
 </update>
 

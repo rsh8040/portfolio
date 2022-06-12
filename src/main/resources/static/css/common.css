@@ -113,6 +113,11 @@ td {
     margin: 10px;
 }
 
+.sns-list img:hover {
+    transform: scale(1.5);
+    transition: .5s;
+}
+
 .profile{
     display: flex;
 }
@@ -131,6 +136,17 @@ td {
     font-weight: 900;
     margin: 100px 0 20px 20px;
     color: #fff;
+}
+
+.blink {
+    animation: blink 0.5s infinite;
+    font-size: xx-large;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0;
+    }
 }
 
 .sub-title {
@@ -161,7 +177,7 @@ td {
 
 #carouselExampleControls {
     margin-left: 1058px;
-    top: -517px;
+    top: -743px;
     width: 800px;
     height: 500px;
 }
@@ -233,6 +249,7 @@ button a {
 }
 
 .skill-package {
+    position: relative;
     display: flex;
     margin-bottom: 20px;
 }
@@ -246,5 +263,54 @@ button a {
 }
 
 .skill-contents img {
-    margin-left: 20px;
+    margin: 5px 20px 5px 20px;
+}
+
+.skill-textbox:hover {
+    opacity: .6;
+}
+
+
+.skill-textbox span {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    height: 100px;
+    line-height: 100px;
+    font-size: small;
+    font-weight: 900;
+    text-align: center;
+    width: 140px;
+}
+
+.skill-textbox:hover span{
+    z-index: 1;
+    opacity: 1;
+}
+
+.skill-contents {
+    display: flex;
+}
+
+.about-textbox {
+    width: 1200px;
+    margin: 130px 0 0 450px;
+    position: relative;
+    display: flex;
+}
+
+.about-title {
+    width: 700px;
+    height: 96px;
+    line-height: 96px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 800;
+    color: #a5a3a3;
+}
+
+.about-content {
+    width: 750px;
+    font-weight: 700;
+    color: #a5a3a3;
 }

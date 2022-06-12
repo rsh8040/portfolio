@@ -58,7 +58,7 @@
             </tr>
             <tr>
             </tr>
-            <tr th:if="${'' != board.attachmentNm}">
+            <tr th:if="${not #strings.isEmpty(board.attachmentNm)}">
                 <td>FILE UPLOAD</td>
                 <td>
                     <img th:src="@{${board.attachment}}" width="500px" height="300px">
